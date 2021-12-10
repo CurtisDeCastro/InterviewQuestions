@@ -1,5 +1,6 @@
 const WordTrie = require('../classes/wordTrie.js');
 const data = require("../utilities/artOfWar.js");
+const log = require('./messages');
 
 
 const fillLine = (word) => {
@@ -30,7 +31,7 @@ const testManyQueries = (methods) => {
   });
   methods.contains ?
     longQueryArr.slice().forEach((word) => {
-      console.log(fillLine(word),' ',LargeDataset.contains(word));
+      log.manyQueries.contains(fillLine(word),medTestTrie.contains(word));
     }) : null;
   methods.insert ?
     (() => {
@@ -39,7 +40,7 @@ const testManyQueries = (methods) => {
         let randomIndex = Math.floor((Math.random()*100));
         const random = longQueryArr[randomIndex],
         wasInserted = medTestTrie.contains(random);
-        console.log(`Random value "${random}" was inserted::`,wasInserted);
+        log.manyQueries.insert(random, wasInserted);
       }
       medTestTrie = new WordTrie();
     })() : null;
@@ -54,9 +55,9 @@ const testManyQueries = (methods) => {
         testTree.remove(word);
         let wasRemoved = testTree.contains(word);
         if (wasInserted && !wasRemoved){
-          console.log(`SUCCESS: "${word}" was inserted then removed`);
+          log.manyQueries.removeSuccess(word);
         } else {
-          console.log(`FAILURE: "${word}" either inserted and not removed or never inserted`);
+          log.manyQueries.removeFailure(word);
         }
       }
       medTestTrie = new WordTrie();
@@ -66,9 +67,9 @@ const testManyQueries = (methods) => {
       longQueryArr.slice().forEach((word) => {
         const wordIsThere = LargeDataset.find(word);
         if (wordIsThere){
-          console.log(`SUCCESS: "${word}" was found among dataset of ${data.length} words`);
+          log.manyQueries.findSuccess(word, data.length);
         } else {
-          console.log(`FAILURE: "${word}" was not found among dataset of ${data.length} words`);
+          log.manyQueries.findFailure(word, data.length);
         }
       })
     })() : null;

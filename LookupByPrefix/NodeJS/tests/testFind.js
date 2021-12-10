@@ -1,12 +1,13 @@
 const TestTrie = require('./TestTrie.js');
+const log = require('./messages');
 
 const find = () => {
-  console.log('Attempting to find a test string...');
+  log.find.checking();
   let findsAllWordsWithPrefix = TestTrie.find('c').length === 4;
   if (findsAllWordsWithPrefix){
-    console.log('Search successful:: All expected results returned');
+    log.find.success();
   } else {
-    console.log('Search UNSUCCESSFUL:: Expected results NOT returned');
+    log.find.failure();
   };
   return findsAllWordsWithPrefix;
 }

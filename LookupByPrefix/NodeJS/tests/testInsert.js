@@ -1,14 +1,15 @@
 const WordTrie = require('../classes/WordTrie.js');
 const TestTrie = require('./TestTrie.js');
+const log = require('./messages');
 
 const insert = () => {
-  console.log('Attempting to insert a test string...');
+  log.insert.checking();
   TestTrie.insert("TestOne");
   let wordWasFound = TestTrie.contains("TestOne");
   if (wordWasFound){
-    console.log('Insertion Successful');
+    log.insert.success();
   } else {
-    console.log('Insertion Unsuccessful');
+    log.insert.failure();
   }
   TestTrie.remove("TestOne");
   return wordWasFound;

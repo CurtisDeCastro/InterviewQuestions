@@ -1,4 +1,5 @@
 const WordTrie = require('../classes/WordTrie.js');
+
 const TestTrie = (() => {
   let testTrie = new WordTrie();
   let values = 'hello,hella,cat,catch,cattle,cog,dog'.split(',');

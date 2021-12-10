@@ -1,14 +1,15 @@
 const TestTrie = require('./TestTrie.js');
+const log = require('./messages');
 
 const remove = () => {
-  console.log('Attempting removal of test value');
+  log.remove.checking();
   TestTrie.insert("TestOne");
   TestTrie.remove("TestOne");
   const removalSuccess = !TestTrie.contains("TestOne");
   if (removalSuccess){
-    console.log('SUCCESS: Inserted value was removed');
+    log.remove.success();
   } else {
-    console.log('FAILURE: Inserted value was not removed');
+    log.remove.failure();;
   }
   return removalSuccess;
 }

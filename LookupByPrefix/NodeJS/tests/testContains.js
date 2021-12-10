@@ -1,18 +1,19 @@
 const TestTrie = require('./TestTrie.js');
+const log = require('./messages');
 
 const contains = () => {
-  console.log('Checking if test value present in TestTrie');
+  log.contains.checking();
   TestTrie.insert("expectedValue");
   const findsExpected = TestTrie.contains("expectedValue");
   const findsNoUnexpected = !TestTrie.contains("anUnexpectedValue");
   if (findsExpected && findsNoUnexpected){
-    console.log('Expected value returned and expected failure failed');
+    log.contains.success();
   } else if (findsExpected && !findsNoUnexpected){
-    console.log('FAILURE: Expected value found but unexpected value not found');
+    log.contains.failure1();
   } else if (!findsExpected && findsNoUnexpected){
-    console.log('FAILURE: Expected value not found, but no unexpected values were found');
+    log.contains.failure2();
   } else {
-    console.log('FAILURE: Expected values not found and unexpected values were found');
+    log.contains.failure3();
   }
   TestTrie.remove("expectedValue");
   return findsExpected && findsNoUnexpected;
