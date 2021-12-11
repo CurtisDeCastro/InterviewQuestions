@@ -4,8 +4,8 @@
 | --- | --- | --- |
 | NodeJS | index.js | **Run this file to see output of testing.** _Preferences may be toggled in the prefs object just above the execution of test(). All are toggled off by default, so in order to view output in the console at least one pref must be toggled to true or 1_ |
 | /classes | >>> | _contains class components and methods used to create, read, update and delete values from a Trie_ |
-| >>> | /letter.js | _constructor for an individual node in the trie. Contains one method, **getWord**_ |
-| >>> | /wordTrie.js | _constructor for the entire trie. Includes methods **insert**, **find**, **remove** and **contains**_ |
+| >>> | letter.js | _constructor for an individual node in the trie. Contains one method, **getWord**_ |
+| >>> | wordTrie.js | _constructor for the entire trie. Includes methods **insert**, **find**, **remove** and **contains**_ |
 | /tests | >>> | _contains test suite_ |
 | >>> | index.js | _centralizes all tests in single export_ |
 | >>> | logTrie.js | _function to log a non-minified input tree to console WITH indentation_ |
