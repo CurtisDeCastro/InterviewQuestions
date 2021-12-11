@@ -1,5 +1,3 @@
-#Lookup By Prefix
----
 ### File Structure of '/NodeJS'
 ---
 | Directory | File Name | Description |
