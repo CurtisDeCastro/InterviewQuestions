@@ -19,6 +19,7 @@
 | /utilities | >>> | _contains useful tools and helper functions_ |
 | >>> | artOfWar.js | _the book Art of War, stored as a string variable and exported as an array of word values_ |
 | >>> | LargeDataset.js | _function imports word array from artOfWar.js and populates a new trie with each word, exporting the trie_ |
+| /commented | >>> | _contains copies of each of the files above in the same file structure **with comments**_ |
 
 ## More Code Inbound!
 Upcoming optimization checklist:
