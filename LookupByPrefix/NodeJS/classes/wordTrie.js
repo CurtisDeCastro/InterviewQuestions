@@ -18,6 +18,7 @@ WordTrie.prototype.insert = function(word) {
     }
   }
 };
+
 WordTrie.prototype.contains = function(word) {
   if (!word) return;
   var node = this.root;
@@ -31,14 +32,15 @@ WordTrie.prototype.contains = function(word) {
   }
   return node.isWord;
 };
+
 WordTrie.prototype.remove = function(word) {
   if (!word) return;
   let node = this.root;
-  const chain = [];
+  const killChain = [];
   const length = word.length === 1 ? 2 : word.length;
   for (let i = 0; i < length; i++) {
     if (node.children[word[i]]) {
-      chain.push(node);
+      killChain.push(node);
       node = node.children[word[i]];
     } else {
       return;
@@ -48,35 +50,35 @@ WordTrie.prototype.remove = function(word) {
     node.isWord = false;
     return node;
   }
-  let child = chain.length ? chain.pop() : null;
-  let parent = chain.length ? chain.pop() : null;
-  while (true) {
-    child && parent && delete parent.children[child.letter];
-    if (
-      Object.keys(parent.children).length ||
-      !chain.length
-    ) {
-      node.isWord = false;
-      return node;
-    }
-    child = parent;
-    parent = chain.pop();
+  let child = killChain.length ? killChain.pop() : null;
+  let parent = killChain.length ? killChain.pop() : null;
+  child && parent && delete parent.children[child.letter];
+  if (
+    Object.keys(parent.children).length ||
+    !killChain.length
+  ) {
+    node.isWord = false;
+    return node;
   }
-}
+  child = parent;
+  parent = killChain.pop();
+};
+
 WordTrie.prototype.find = function(word) {
   if (!word) return;
   var node = this.root;
-  var output = [];
+  var foundWords = [];
   for(var i = 0; i < word.length; i++) {
     if (node.children[word[i]]) {
       node = node.children[word[i]];
     } else {
-      return output;
+      return foundWords;
     }
   }
-  findAllWords(node, output);
-  return output;
+  findAllWords(node, foundWords);
+  return foundWords;
 };
+
 const findAllWords = (node, arr) => {
   if (node.isWord) {
     arr.unshift(node.getWord());
@@ -84,6 +86,6 @@ const findAllWords = (node, arr) => {
   for (var child in node.children) {
     findAllWords(node.children[child], arr);
   }
-}
+};
 
 module.exports = WordTrie;
