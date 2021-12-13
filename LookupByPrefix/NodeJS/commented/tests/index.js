@@ -1,3 +1,4 @@
+// import all tests
 var quickValidate = require('./quickValidate.js');
 var logTrie = require('./logTrie.js');
 var testManyQueries = require('./testManyQueries.js');
@@ -8,6 +9,7 @@ var testRemove = require('./testRemove.js');
 var logTrie = require('./logTrie.js');
 var TestTrie = require('./TestTrie.js');
 
+// export all tests
 module.exports = {
   quickValidate,
   logTrie,

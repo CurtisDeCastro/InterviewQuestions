@@ -1,3 +1,4 @@
+// Centralize all console messages in this factory function for consisitency across tests
 
 const quickValidate = {
   insert: (testInsert) => {console.log('INSERTS A NEW WORD WHEN PROMPTED::', testInsert)},
@@ -41,6 +42,7 @@ const manyQueries = {
   findFailure: (word, length) => {console.log(`FAILURE:: "${word}" was not found among dataset of ${length} words`)},
 }
 
+// export messages for each method
 module.exports = {
   quickValidate,
   contains,
