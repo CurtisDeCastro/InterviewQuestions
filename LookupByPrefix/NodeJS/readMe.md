@@ -22,11 +22,12 @@
 
 ## More Code Inbound!
 Upcoming optimization checklist:
-1. toggle on/off a pref to only query trie when string > 3 characters for better performance in large datasets
-2. map function for mapping/normalizing all values 
-3. incorporate preference to toggle case sensitivity
-4. enhance test suite and/or refactor to run all tests on LargeDataset
-5. refactor to C++
+1. ~~comment all files~~
+2. toggle on/off a pref to only query trie when string > 3 characters for better performance in large datasets
+3. map function for mapping/normalizing all values
+4. incorporate preference to toggle case sensitivity
+5. enhance test suite and/or refactor to run all tests on LargeDataset
+6. refactor to C++
 
 Bugs that need fixing:
 1. fails if attempting to insert a 1 character word such as 'I' or 'A'
