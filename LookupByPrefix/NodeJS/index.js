@@ -12,7 +12,7 @@ function runTests(prefs) {
   prefs.testFind ? test.testFind() : null;
   prefs.testContains ? test.testContains() : null;
   prefs.testRemove ? test.testRemove() : null;
-  Object.values(prefs.testManyQueries).includes(1) ?
+  Object.values(prefs.testManyQueries).includes(1 || true) ?
     test.testManyQueries(prefs.testManyQueries) :
     null;
 }
