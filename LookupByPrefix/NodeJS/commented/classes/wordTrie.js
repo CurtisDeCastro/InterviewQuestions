@@ -107,9 +107,9 @@ WordTrie.prototype.find = function(word) {
   // if no word input, finish without executing any code
   if (!word) return;
   // define alias variable for current node
-  var node = this.root;
+  let node = this.root;
   // instantiate bucket for found words
-  var foundWords = [];
+  const foundWords = [];
   // iterate through the letters of the word
   for(var i = 0; i < word.length; i++) {
     // if the current node has current letter as a child
@@ -124,6 +124,7 @@ WordTrie.prototype.find = function(word) {
   }
   // implement recursive helper function (below) by passing in current node and array of found words
   findAllWords(node, foundWords);
+
   // return array of found words
   return foundWords;
 };
@@ -132,10 +133,10 @@ const findAllWords = (node, arr) => {
   // if the current node is the last letter of the word
   if (node.isWord) {
     // add the word the the found words array
-    arr.unshift(node.getWord());
+    arr.push(node.getWord());
   }
   // for each child in the node's children
-  for (var child in node.children) {
+  for (let child in node.children) {
     // recursively sweep through the trie to find all matches
     findAllWords(node.children[child], arr);
   }

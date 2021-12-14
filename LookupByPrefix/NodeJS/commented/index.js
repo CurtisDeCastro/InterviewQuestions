@@ -5,6 +5,9 @@ var LargeDataset = require('./utilities/LargeDataset.js');
 var test = require('./tests');
 
 function runTests(prefs) {
+  // declare start variable to start timer
+  const start = new Date();
+  // declare alias for readability
   let doNothing = null;
   // console log result of inserting every word in Art of War into a trie
   prefs.showLargeTrie ? test.logTrie(LargeDataset) : doNothing;
@@ -26,9 +29,30 @@ function runTests(prefs) {
   Object.values(prefs.testManyQueries).includes(1 || true) ?
     test.testManyQueries(prefs.testManyQueries) :
     null;
+
+  // record end time
+  const end = new Date();
+  // log a message with the total execution time
+  test.log.general.timestamp(start, end);
 }
 // toggle which tests to run by indicating 1/true or 0/false
 const testingPrefs = {
+  showLargeTrie: 0,
+  showExampleTrie: 0,
+  quickValidate: 0,
+  testInsert: 0,
+  testContains: 0,
+  testFind: 0,
+  testRemove: 0,
+  testManyQueries: {
+    insert: 0,
+    contains: 0,
+    find: 0,
+    remove: 0,
+  },
+}
+// optional preset with all options toggled on (collapsed)
+const toggleAll = {
   showLargeTrie: 1,
   showExampleTrie: 1,
   quickValidate: 1,
@@ -45,5 +69,5 @@ const testingPrefs = {
 }
 
 // execute function by passing in testing preferences
-runTests(testingPrefs);
+runTests(toggleAll);
 

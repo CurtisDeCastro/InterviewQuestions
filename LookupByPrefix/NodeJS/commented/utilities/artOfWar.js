@@ -797,5 +797,10 @@ XIII. The Use of Spies
 // split the text into array of its individual words
 const textArr = text.split(' ');
 
+// remove any non-letter characters from word with regex
+textArr.forEach((word) => {
+  word = word.replace(/[^a-z\s]+|\s+/gmi, "");
+});
+
 // export array of words
 module.exports = textArr;

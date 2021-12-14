@@ -3,7 +3,13 @@ const log = require('./messages');
 
 const find = () => {
   log.find.checking();
-  let findsAllWordsWithPrefix = TestTrie.find('c').length === 4;
+  const test = TestTrie.find('c');
+  let findsAllWordsWithPrefix =
+    test[0] === 'cat' &&
+    test[1] === 'catch' &&
+    test[2] === 'cattle' &&
+    test[3] === 'cog'
+  ;
   if (findsAllWordsWithPrefix){
     log.find.success();
   } else {

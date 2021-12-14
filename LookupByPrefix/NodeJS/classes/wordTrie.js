@@ -66,8 +66,8 @@ WordTrie.prototype.remove = function(word) {
 
 WordTrie.prototype.find = function(word) {
   if (!word) return;
-  var node = this.root;
-  var foundWords = [];
+  let node = this.root;
+  const foundWords = [];
   for(var i = 0; i < word.length; i++) {
     if (node.children[word[i]]) {
       node = node.children[word[i]];
@@ -81,7 +81,7 @@ WordTrie.prototype.find = function(word) {
 
 const findAllWords = (node, arr) => {
   if (node.isWord) {
-    arr.unshift(node.getWord());
+    arr.push(node.getWord());
   }
   for (var child in node.children) {
     findAllWords(node.children[child], arr);

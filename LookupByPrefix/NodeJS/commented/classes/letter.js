@@ -17,7 +17,7 @@ Letter.prototype.getWord = function() {
   // begin loop that ends once each letter of the word has been returned
   while (node !== null) {
     // add the current letter to output array
-    output.push(node.letter);
+    output.unshift(node.letter);
     // reassign current node to parent node and restart loop until no letters are left
     node = node.parent;
   }

@@ -8,7 +8,7 @@ const LargeDataset = (() => {
   // instantiate a new trie
   let largeTrie = new WordTrie();
   // insert each word in the new word trie
-  data.forEach((word) => largeTrie.insert(word));
+  data.forEach((word) => {largeTrie.insert(word)});
   // return the trie
   return largeTrie;
 })();

@@ -795,4 +795,8 @@ XIII. The Use of Spies
 
 const textArr = text.split(' ');
 
+textArr.forEach((word) => {
+  word = word.replace(/[^a-z\s]+|\s+/gmi, "");
+});
+
 module.exports = textArr;

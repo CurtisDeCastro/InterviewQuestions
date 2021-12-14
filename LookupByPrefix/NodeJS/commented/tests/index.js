@@ -8,6 +8,7 @@ var testFind = require('./testFind.js');
 var testRemove = require('./testRemove.js');
 var logTrie = require('./logTrie.js');
 var TestTrie = require('./TestTrie.js');
+var log = require('./messages');
 
 // export all tests
 module.exports = {
@@ -19,4 +20,5 @@ module.exports = {
   testFind,
   testRemove,
   TestTrie,
+  log,
 }

@@ -42,6 +42,12 @@ const manyQueries = {
   findFailure: (word, length) => {console.log(`FAILURE:: "${word}" was not found among dataset of ${length} words`)},
 }
 
+const general = {
+  timestamp: (start, end) => {
+    console.log(`~~~All tests run in ${end-start} milliseconds~~~`);
+  }
+}
+
 // export messages for each method
 module.exports = {
   quickValidate,
@@ -50,4 +56,5 @@ module.exports = {
   find,
   remove,
   manyQueries,
+  general,
 }

@@ -9,7 +9,7 @@ Letter.prototype.getWord = function() {
   var output = [];
   var node = this;
   while (node !== null) {
-    output.push(node.letter);
+    output.unshift(node.letter);
     node = node.parent;
   }
   return output.join('');
