@@ -2,6 +2,7 @@ var WordTrie = require('./classes/wordTrie.js');
 var ExampleTrie = require('./tests/TestTrie.js');
 var LargeDataset = require('./utilities/LargeDataset.js');
 var test = require('./tests');
+var preset = require('./utilities/presets.js');
 
 function runTests(prefs) {
   const start = new Date();
@@ -36,26 +37,11 @@ const testingPrefs = {
     remove: 0,
   },
 }
-const All = {
-  showLargeTrie: 1,
-  showExampleTrie: 1,
-  quickValidate: 1,
-  testInsert: 1,
-  testContains: 1,
-  testFind: 1,
-  testRemove: 1,
-  testManyQueries: {
-    insert: 1,
-    contains: 1,
-    find: 1,
-    remove: 1,
-  },
-}
 
 // execute the tests by either 1) indicating which tests to run in the testingPrefs object above, then passing 0 to the IIFE below, or 2) by passing 1 to the IIFE below to run all tests
-const choosePresetHere = ((i) => {
+const ENTER_PRESET_BELOW = ((i) => {
   i === 0 ? runTests(testingPrefs) : null;
-  i === 1 ? runTests(All) : null;
+  i === 1 ? runTests(preset.All) : null;
 })(0);
 // enter preset into parenthesis at end of line directly above
 
