@@ -52,7 +52,7 @@ const testingPrefs = {
   },
 }
 // optional preset with all options toggled on (collapsed)
-const toggleAll = {
+const All = {
   showLargeTrie: 1,
   showExampleTrie: 1,
   quickValidate: 1,
@@ -68,6 +68,10 @@ const toggleAll = {
   },
 }
 
-// execute function by passing in testing preferences
-runTests(toggleAll);
+// execute the tests by either 1) indicating which tests to run in the testingPrefs object above, then passing 0 to the IIFE below, or 2) by passing 1 to the IIFE below to run all tests
+const choosePresetHere = ((i) => {
+  i === 0 ? runTests(testingPrefs) : null;
+  i === 1 ? runTests(All) : null;
+})(0);
+// enter preset into parenthesis at end of line directly above
 
