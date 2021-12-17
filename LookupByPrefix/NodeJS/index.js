@@ -28,7 +28,7 @@ const testingPrefs = {
   quickValidate: 0,
   testInsert: 0,
   testContains: 0,
-  testFind: 0,
+  testFind: 1,
   testRemove: 0,
   testManyQueries: {
     insert: 0,

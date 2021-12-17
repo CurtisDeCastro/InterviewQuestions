@@ -64,28 +64,26 @@ WordTrie.prototype.remove = function(word) {
   parent = killChain.pop();
 };
 
-WordTrie.prototype.find = function(word) {
-  if (!word) return;
+WordTrie.prototype.find = function(query) {
+  if (!query) return;
   let node = this.root;
   const foundWords = [];
-  for(var i = 0; i < word.length; i++) {
-    if (node.children[word[i]]) {
-      node = node.children[word[i]];
+  for(var i = 0; i < query.length; i++) {
+    if (node.children[query[i]]) {
+      node = node.children[query[i]];
     } else {
       return foundWords;
     }
+  }
+  const findAllWords = (node, arr) => {
+    node.isWord ? arr.push(node.getWord()) : null;
+    Object.keys(node.children).forEach((child) => {
+      findAllWords(node.children[child], arr)
+    });
   }
   findAllWords(node, foundWords);
   return foundWords;
 };
 
-const findAllWords = (node, arr) => {
-  if (node.isWord) {
-    arr.push(node.getWord());
-  }
-  for (var child in node.children) {
-    findAllWords(node.children[child], arr);
-  }
-};
 
 module.exports = WordTrie;

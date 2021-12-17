@@ -67,9 +67,9 @@ WordTrie.prototype.remove = function(word) {
   const length = word.length === 1 ? 2 : word.length;
   // iterate through word
   for (let i = 0; i < length; i++) {
-    // if the current node has child with property of current char in word
+    // if the current node has child at current char of word
     if (node.children[word[i]]) {
-      // push the current node the the deletion bucket
+      // push the current node to the deletion bucket
       killChain.push(node);
       // reassign current node to the found child node and begin next iteration
       node = node.children[word[i]];
