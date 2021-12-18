@@ -1,7 +1,0 @@
-1) Work on cache problems + testing suite
-2) continue compiling resources for boilerplate repo
-3) C++ tutorials
-4) computer vision mobile app course
-5) arduino project
-
-email back recruiters on linkedin
