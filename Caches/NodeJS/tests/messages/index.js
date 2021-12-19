@@ -1,3 +1,4 @@
+const util = require('../../util');
 
 const quickValidate = {
   get: (testGet) => {console.log('GETS A PREVIOUSLY ADDED VALUE WHEN PROMPTED::', testGet)},
@@ -17,8 +18,9 @@ const put = {
 }
 
 const manyQueries = {
-  get: (val, bool) => {`Test LRU Cache contains previously inserted value "${val}"? `,bool},
-  put: (random, wasInserted) => {console.log(`Random value "${random}" was inserted?`,wasInserted)},
+  getSuccess: (orderN, paramArr, val) => {console.log(util.fillLine(`#${orderN} Value "${val}"`,26),util.fillLine(`Returned from Key "${paramArr[orderN]}"`,28),`in LRU Cache`)},
+  getFailure: (orderN, paramArr) => {console.log(util.fillLine(`#${orderN} Value "${paramArr[orderN]}"`,45),'Not Found in LRU Cache')},
+  put: (orderN, paramArr) => {console.log(util.fillLine(`#${orderN} assigning value ${paramArr[orderN][1]} to key ${paramArr[orderN][0]} in LRU Cache`,71))},
 }
 
 const general = {

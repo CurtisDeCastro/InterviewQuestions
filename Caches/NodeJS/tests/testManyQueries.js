@@ -29,21 +29,23 @@ const testManyQueries = (funcArr, paramArr, prefs) => {
     startInd = prefs.startInd :
     startInd = 0;
   const endInd = startInd + numResults;
-  const testBlock = tests.slice(startInd, startInd+numResults);
+  const testBlock = tests.slice(startInd, endInd);
   let orderNum = 0;
-  testBlock.forEach((value, i) => {
+  console.time('of which this much was spent logging');
+  testBlock.forEach((val, i) => {
     const orderNumber = startInd + i;
     if (i === testBlock.length-1){
       orderNum = paramArr[orderNumber][0]
     }
-    value === undefined ?
-      console.log(util.fillLine(`#${orderNumber} assigning value ${paramArr[orderNumber][1]} to key ${paramArr[orderNumber][0]} in LRU Cache`,71)) :
-      value === -1 ?
-      console.log(util.fillLine(`#${orderNumber} Value "${paramArr[orderNumber]}"`,45),'Not Found in LRU Cache') :
-      console.log(util.fillLine(`#${orderNumber} Value "${value}"`,26),util.fillLine(`Returned from Key "${paramArr[orderNumber]}"`,28),`in LRU Cache`);
+    val === undefined ?
+      log.manyQueries.put(orderNumber, paramArr) :
+      val === -1 ?
+      log.manyQueries.getFailure(orderNumber, paramArr) :
+      log.manyQueries.getSuccess(orderNumber, paramArr, val);
   });
   console.log('TEST:: Key:',orderNum,'Returns:',testCache.get(orderNum));
   console.timeEnd(`Tested All Values in:`);
+  console.timeEnd('of which this much was spent logging');
   return tests;
 };
 
