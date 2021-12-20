@@ -37,7 +37,7 @@ const userPrefs = {
 }
 
 // execute the tests by either 1) indicating which tests to run in the testingPrefs object above, then passing 0 to the IIFE below, or 2) by passing 1 to the IIFE below to run all tests
-const ENTER_PRESET_ON_LINE_33 = ((i) => {
+const runLRUCacheTests = ((i) => {
   const {All, onlyGet, onlyPut} = util.presets;
   i === 0 ? runTests(userPrefs) : null;
   i === 1 ? runTests(All) : null;
