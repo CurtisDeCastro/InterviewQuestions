@@ -2,22 +2,22 @@ function Cache(){
   this.cache = {};
 }
 
-Cache.prototype.get = function(int){
-  if (this.cache[int]) {
-    console.log(this.cache[int]);
-    return this.cache[int];
+Cache.prototype.get = function(key){
+  if (this.cache[key]) {
+    console.log(this.cache[key]);
+    return this.cache[key];
   } else {
     console.log('null');
     return null;
   }
 }
 
-Cache.prototype.insert = function(int, string){
-  if (this.cache[int]) {
-    this.cache[int] = string;
+Cache.prototype.insert = function(key, val){
+  if (this.cache[key]) {
+    this.cache[key] = val;
     return true;
   } else {
-    this.cache[int] = string;
+    this.cache[key] = val;
     return false;
   }
 }
