@@ -11,7 +11,7 @@ var equalHeight = function(nums, target) {
     bucket[target-nums[i]] = i;
   }
 };
-// git commit -m "Implement equal-height method as helper function"
+
 const maxArea = (height) => {
   height.forEach((h) => {
     console.log(h)
