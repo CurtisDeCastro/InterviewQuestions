@@ -1,19 +1,21 @@
 //https://leetcode.com/problems/container-with-most-water/submissions/
 
-var twoSum = function(nums, target) {
+// returns an array of indecies for current height and next equivalent height (if one exists)
+var equalHeight = function(nums, target) {
+  target = 2 * target;
   const bucket = {};
   for (var i = 0; i < nums.length; i++) {
-      if (bucket[nums[i]] >= 0){
-          return [bucket[nums[i]], i]
-      }
-      bucket[target-nums[i]] = i;
+    if (bucket[nums[i]] >= 0){
+      return [bucket[nums[i]], i]
+    }
+    bucket[target-nums[i]] = i;
   }
 };
-
-
+// git commit -m "Implement equal-height method as helper function"
 const maxArea = (height) => {
   height.forEach((h) => {
-    console.log(twoSum(height,h*h));
+    console.log(h)
+    console.log(equalHeight(height,h));
   })
 };
 // const maxArea = (height) => {
@@ -51,8 +53,13 @@ const maxArea = (height) => {
 //   }
 // };
 
-const testCases = {
-  one: [1,8,6,2,5,4,8,3,7],
-}
+const testCases = [
+  [1,8,6,2,5,4,8,3,7],
+  [1,2,1],
+]
 
-console.log(maxArea(testCases.one));
+testCases.forEach((test) => {
+  console.log('TEST: ', test);
+  console.log(maxArea(test));
+})
+
