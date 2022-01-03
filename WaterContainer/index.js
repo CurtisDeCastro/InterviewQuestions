@@ -17,12 +17,6 @@ var twoProduct = function(nums, target) {
   // console.log('Target: ',target);
   const bucket = {};
   for (var i = 0; i < nums.length; i++) {
-    let copy = nums.slice()
-    copy.splice(i,1);
-    // if (copy.includes(nums[i])) {
-      console.log(copy)
-    //   console.log('YEEEE',nums[i]);
-    // }
     if (bucket[Math.sqrt(target)]){
       return [bucket[Math.sqrt(target)], i]
     }
@@ -34,19 +28,23 @@ const containsDuplicate = (arr) => {
   let duplicates = {};
   for (let i = 0; i < arr.length; i++) {
     let copy = arr.slice();
-    copy.splice(i,1);
-    duplicates[arr[i]] = [];
-    while (copy.includes(arr[i])) {
-      duplicates[arr[i]].push(copy.splice(copy.indexOf(arr[i]),1)[0]);
-    };
-  }
-  for (key in Object.keys(duplicates)) {
-    if (duplicates[key] <= 0) {
-      delete duplicates[key];
+    let removed = copy.splice(i,1);
+    console.log(copy);
+    if (copy.includes(arr[i]) && !duplicates[arr[i]]) {
+      duplicates[arr[i]] = [i];
+    } else if (duplicates[arr[i]] && copy.includes(arr[i])) {
+      let removed2 = copy.splice(copy.indexOf(arr[i]),1);
+      duplicates[arr[i]].push(removed2[0])
     }
+
   }
   return duplicates;
 }
+
+const returnArea = (arr) => {
+
+}
+
 
 const maxArea = (height) => {
   height.forEach((h) => {
