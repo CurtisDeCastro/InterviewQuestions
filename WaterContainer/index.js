@@ -29,7 +29,6 @@ const containsDuplicate = (arr) => {
   for (let i = 0; i < arr.length; i++) {
     let copy = arr.slice();
     let removed = copy.splice(i,1);
-    console.log(copy);
     if (copy.includes(arr[i]) && !duplicates[arr[i]]) {
       duplicates[arr[i]] = [i];
     } else if (duplicates[arr[i]] && copy.includes(arr[i])) {
